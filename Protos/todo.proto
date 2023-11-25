@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "Grpc1";
+
+package todoit;
+
+service ToDoIt{
+
+//create
+rpc CreateToDo(CreateToDoRequest) returns (CreateToDoResponse) {}
+
+//Read Single
+rpc ReadToDo(ReadToDoRequest) returns (ReadToDoResponse){}
+
+//Read List
+rpc ListToDo(GetAllRequest) returns (GetAllResponse){}
+//Update
+
+//Delete
+}
+
+message CreateToDoRequest{
+    string Title = 1;
+    string Description = 2;
+}
+
+message CreateToDoResponse{
+    int32 = 1;
+}
+
+message ReadToDoRequest{
+    int32 = 1;
+}
+
+message ReadToDoResponse{
+    int32 = 1;
+    string Title = 2;
+    string Description = 3;
+    string to_do_status = 4;
+}
+
+message GetAllRequest{}
+
+message GetAllResponse{
+    repeated ReadToDoResponse to_do = 1;
+}
